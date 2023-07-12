@@ -44,6 +44,15 @@ class Tarea{
         $sql->execute(array($tarea, $descripcion, $fecha_vencimiento, $categoria, $estado));
 
     }
+
+    public static function eliminar($id){
+
+        $conexionBD=BD::crearInstancia();
+
+        $sql= $conexionBD->prepare("DELETE FROM tareas WHERE id=? ");
+        $sql->execute(array($id));
+
+    }
 }
 
 ?>

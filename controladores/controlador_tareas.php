@@ -9,7 +9,7 @@ class ControladorTareas{
 
     public function inicio(){
 
-        print_r(Tarea::consultar());
+        $tareas=Tarea::consultar();
 
         include_once("vistas/tareas/inicio.php");
 
@@ -27,6 +27,7 @@ class ControladorTareas{
             $estado=$_POST['estado'];
             
             Tarea::crear($tarea, $descripcion, $fecha_vencimiento, $categoria, $estado);
+            header("Location:./?controlador=tareas&accion=inicio");
 
             
         }
@@ -40,6 +41,16 @@ class ControladorTareas{
 
         include_once("vistas/tareas/editar.php");
         
+    }
+
+    public function eliminar(){
+        // print_r($_GET);
+        $id=$_GET['id'];
+
+        Tarea::eliminar($id);
+        header("Location:./?controlador=tareas&accion=inicio");
+
+
     }
 }
 
