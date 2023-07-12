@@ -9,6 +9,8 @@ class ControladorTareas{
 
     public function inicio(){
 
+        print_r(Tarea::consultar());
+
         include_once("vistas/tareas/inicio.php");
 
     }
@@ -17,7 +19,7 @@ class ControladorTareas{
 
         if($_POST){
 
-            print_r($_POST);
+            // print_r($_POST);
             $tarea=$_POST['tarea'];
             $descripcion=$_POST['descripcion'];
             $fecha_vencimiento=$_POST['fecha_vencimiento'];
