@@ -27,7 +27,7 @@
                 <td><?php echo $tarea->fecha_alta; ?></td>
                 <td>
                   <div class="btn-group" role="group" aria-label="Button group name">
-                    <a href="#" class="btn btn-info">Editar</a>
+                    <a href="?controlador=tareas&accion=editar&id=<?php echo $tarea->id; ?>" class="btn btn-info">Editar</a>
                     <a href="?controlador=tareas&accion=eliminar&id=<?php echo $tarea->id; ?>" class="btn btn-danger">Eliminar</a>
                   </div> 
                 </td>

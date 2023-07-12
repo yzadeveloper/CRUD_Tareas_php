@@ -45,6 +45,8 @@ class Tarea{
 
     }
 
+    
+
     public static function eliminar($id){
 
         $conexionBD=BD::crearInstancia();
@@ -53,6 +55,26 @@ class Tarea{
         $sql->execute(array($id));
 
     }
+
+    public static function buscar($id){
+
+        $conexionBD=BD::crearInstancia();
+
+        $sql= $conexionBD->prepare("SELECT * FROM tareas WHERE id=? ");
+        $sql->execute(array($id));
+        $tarea=$sql->fetch();
+        return new Tarea($tarea['id'], $tarea['tarea'], $tarea['descripcion'], $tarea['fecha_vencimiento'], $tarea['categoria'], $tarea['estado'], $tarea['fecha_alta']);
+
+    }
+
+    public static function editar($id, $tarea, $descripcion, $fecha_vencimiento, $categoria, $estado, $fecha_alta){
+        $conexionBD=BD::crearInstancia();
+        $sql= $conexionBD->prepare("UPDATE tareas SET tarea=?, descripcion=?, fecha_vencimiento=?, categoria=?, estado=?, fecha_alta=? WHERE id=?");
+        $sql->execute(array($tarea, $descripcion, $fecha_vencimiento, $categoria, $estado, $fecha_alta, $id));
+        
+    }
+
+    
 }
 
 ?>

@@ -18,9 +18,9 @@
     <header>
         <nav class="navbar navbar-expand navbar-light bg-light">
             <div class="nav navbar-nav">
-                <a class="nav-item nav-link active" href="#" aria-current="page">Lista de Tareas <span class="visually-hidden">(current)</span></a>
-                <a class="nav-item nav-link" href="#">Inicio</a>
-                <a class="nav-item nav-link" href="#">Tareas</a>
+                <a class="nav-item nav-link active" href="?controlador=tareas&accion=inicio" aria-current="page">Lista de Tareas de Yolanda <span class="visually-hidden">(current)</span></a>
+                <a class="nav-item nav-link" href="?controlador=paginas&accion=inicio">Inicio</a>
+                <a class="nav-item nav-link" href="?controlador=tareas&accion=inicio">Tareas</a>
             </div>
         </nav>
     </header>

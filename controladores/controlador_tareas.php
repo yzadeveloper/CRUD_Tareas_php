@@ -38,6 +38,26 @@ class ControladorTareas{
     }
 
     public function editar(){
+        $id=$_GET['id'];
+
+        $tarea=(Tarea::buscar($id));
+        
+
+        if($_POST){
+            $id=$_POST['id'];
+            $tarea=$_POST['tarea'];
+            $descripcion=$_POST['descripcion'];
+            $fecha_vencimiento=$_POST['fecha_vencimiento'];
+            $categoria=$_POST['categoria'];
+            $estado=$_POST['estado'];
+            $fecha_alta=$_POST['fecha_alta'];
+
+            Tarea::editar($id, $tarea, $descripcion, $fecha_vencimiento, $categoria, $estado, $fecha_alta);
+
+            header("Location:./?controlador=tareas&accion=inicio");
+            
+        }
+       
 
         include_once("vistas/tareas/editar.php");
         
