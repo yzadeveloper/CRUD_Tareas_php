@@ -23,7 +23,7 @@ class Tarea{
     public static function consultar(){
         $listaTareas=[];
         $conexionBD=BD::crearInstancia();
-        $sql= $conexionBD->query("SELECT * FROM tareas");
+        $sql= $conexionBD->query("SELECT * FROM tareas ORDER BY id DESC");
 
         foreach($sql->fetchAll() as $tarea){
 
@@ -72,6 +72,66 @@ class Tarea{
         $sql= $conexionBD->prepare("UPDATE tareas SET tarea=?, descripcion=?, fecha_vencimiento=?, categoria=?, estado=?, fecha_alta=? WHERE id=?");
         $sql->execute(array($tarea, $descripcion, $fecha_vencimiento, $categoria, $estado, $fecha_alta, $id));
         
+    }
+
+    public static function ordenar_pendiente(){
+        $listaTareas=[];
+        $conexionBD=BD::crearInstancia();
+        $sql= $conexionBD->query("SELECT * FROM tareas WHERE estado = 'pendiente' ORDER BY fecha_vencimiento;");
+
+        foreach($sql->fetchAll() as $tarea){
+
+            $listaTareas[]= new Tarea($tarea['id'], $tarea['tarea'], $tarea['descripcion'], $tarea['fecha_vencimiento'], $tarea['categoria'], $tarea['estado'], $tarea['fecha_alta']);
+
+        }
+
+        return $listaTareas;
+
+    }
+
+    public static function ordenar_hecho(){
+        $listaTareas=[];
+        $conexionBD=BD::crearInstancia();
+        $sql= $conexionBD->query("SELECT * FROM tareas WHERE estado = 'hecho' ORDER BY fecha_vencimiento DESC;");
+
+        foreach($sql->fetchAll() as $tarea){
+
+            $listaTareas[]= new Tarea($tarea['id'], $tarea['tarea'], $tarea['descripcion'], $tarea['fecha_vencimiento'], $tarea['categoria'], $tarea['estado'], $tarea['fecha_alta']);
+
+        }
+
+        return $listaTareas;
+
+    }
+
+    public static function ordenar_personal(){
+        $listaTareas=[];
+        $conexionBD=BD::crearInstancia();
+        $sql= $conexionBD->query("SELECT * FROM tareas WHERE categoria = 'personal' ORDER BY id DESC;");
+
+        foreach($sql->fetchAll() as $tarea){
+
+            $listaTareas[]= new Tarea($tarea['id'], $tarea['tarea'], $tarea['descripcion'], $tarea['fecha_vencimiento'], $tarea['categoria'], $tarea['estado'], $tarea['fecha_alta']);
+
+        }
+
+        return $listaTareas;
+
+    }
+
+    public static function ordenar_trabajo(){
+        $listaTareas=[];
+        $conexionBD=BD::crearInstancia();
+        $sql= $conexionBD->query("SELECT * FROM tareas WHERE categoria = 'trabajo' ORDER BY id DESC;");
+
+        foreach($sql->fetchAll() as $tarea){
+
+            $listaTareas[]= new Tarea($tarea['id'], $tarea['tarea'], $tarea['descripcion'], $tarea['fecha_vencimiento'], $tarea['categoria'], $tarea['estado'], $tarea['fecha_alta']);
+
+        }
+
+        return $listaTareas;
+
     }
 
     

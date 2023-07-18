@@ -72,6 +72,38 @@ class ControladorTareas{
 
 
     }
+
+    public function ordenar_pendiente(){
+
+        $tareas=Tarea::ordenar_pendiente();
+
+        include_once("vistas/tareas/inicio.php");
+
+    }
+
+    public function ordenar_hecho(){
+
+        $tareas=Tarea::ordenar_hecho();
+
+        include_once("vistas/tareas/inicio.php");
+
+    }
+
+    public function ordenar_personal(){
+
+        $tareas=Tarea::ordenar_personal();
+
+        include_once("vistas/tareas/inicio.php");
+
+    }
+
+    public function ordenar_trabajo(){
+
+        $tareas=Tarea::ordenar_trabajo();
+
+        include_once("vistas/tareas/inicio.php");
+
+    }
 }
 
 ?>
